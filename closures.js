@@ -12,12 +12,12 @@ var outer = function(){
 // Invoke outer saving the return value into another variable called 'inner'.
 
 // Code Here
-
+var inner = outer();
 
 //Once you do that, invoke inner.
 
   //Code Here
-
+inner()
 
 
 //////////////////PROBLEM 2////////////////////
@@ -31,21 +31,17 @@ var callFriend = function(){
   return callF;
 };
 
-
 // Above you're given a callFriend function that returns another function.
 // Create a makeCall function that when invoked logs  'Calling Jake at 435-215-9248' in your console.
 
   //Code Here
 
-
-
-
-
-
+var makeCall = function() {
+  var calling = callFriend();
+  console.log(calling('435-215-9248'));
+};
 
 //////////////////PROBLEM 3////////////////////
-
-
 
 /*
   Write a function called makeCounter that makes the following code work properly.
@@ -53,14 +49,22 @@ var callFriend = function(){
 
 //Code Here
 
+var counter = 0
+
+function makeCounter () {
+  var counter = 0;
+  return function countMe() {
+    counter = counter + 1;
+    return counter;
+  }
+}
+
 //Uncomment this once you make your function
-//   var count = makeCounter();
-//   count(); // 1
-//   count(); // 2
-//   count(); // 3
-//   count(); // 4
-
-
+  var count = makeCounter();
+  count(); // 1
+  count(); // 2
+  count(); // 3
+  count(); // 4
 
 //////////////////PROBLEM 4////////////////////
 
@@ -72,14 +76,17 @@ var callFriend = function(){
 // You will need to use the module pattern to achieve this.
 
 function counterFactory(value) {
-
-  // Code here.
-
-
   return {
+    inc: function() {
+      value++;
+      return value;
+    },
+    dec: function () {
+      value--;
+      return value;
+    }
   }
 }
-
 
 counter = counterFactory(10);
 
@@ -96,11 +103,13 @@ counter = counterFactory(10);
     var welcomeText = 'You\'re doing awesome, keep it up ';
 
     // code message function here.
-
+    function message() {
+      return welcomeText + firstname + ' ' + lastname;
+    }
 
     //Uncommment this to return the value of your invoked message function
 
-    //return message()
+    return message()
   }
 
   motivation('Billy', 'Bob'); // 'Your doing awesome keep it up Billy Bob
