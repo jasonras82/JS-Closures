@@ -104,7 +104,7 @@ counter = counterFactory(10);
 
     // code message function here.
     function message() {
-      return welcomeText + firstname + ' ' + lastname;
+      return welcomeText + firstname + ' ' + lastname + '.';
     }
 
     //Uncommment this to return the value of your invoked message function
@@ -135,13 +135,13 @@ counter = counterFactory(10);
     // Anything that is being returned is made public and can be invoked from outside our lexical scope
 
     return {
-      // Code here.
+      publicMethod: privateMethod
     };
 
   })();
 
-//Uncomment this after you create your public method
-//   module.publicMethod();
+// Uncomment this after you create your public method
+  module.publicMethod();
 
 
 
@@ -152,26 +152,38 @@ counter = counterFactory(10);
 
 function timeOutCounter() {
   for (var i = 0; i <= 5; i++) {
-    setTimeout(function() {
-      console.log(i);
-    }, i * 1000)
+    setTimeout(newScope(i), i * 1000)
   }
 
   function newScope(i) {
-    console.log(i)
+    return function() {
+      console.log(i)
+    }
   }
 }
-timeOutCounter();
   // To make this code work you will need to create a new scope for every iteration.
-
-
-
-
 
 //////////////////PROBLEM 8////////////////////
 
-var funcArray = [];
+var funcArray[]() {
+  function makeArray() {
+    for (var i = 0; i <= 5; i++) {
+      funcArray.push(i);
+    }
+    return funcArray;
+  }
+}
 
+function funcArray[i]() {
+
+}
+
+  function funcArray(i) {
+    return function() {
+      funcArray.push
+    }
+  }
+}
 /*
   Make the following code work
 
