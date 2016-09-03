@@ -2,7 +2,7 @@ var outer = function(){
   var name = 'Tyler';
   return function(){
     return 'The original name was ' + name;
-  }
+  };
 };
 
 
@@ -17,7 +17,7 @@ var inner = outer();
 //Once you do that, invoke inner.
 
   //Code Here
-inner()
+inner();
 
 
 //////////////////PROBLEM 2////////////////////
@@ -49,14 +49,14 @@ var makeCall = function() {
 
 //Code Here
 
-var counter = 0
+var counter = 0;
 
 function makeCounter () {
   var counter = 0;
   return function countMe() {
     counter = counter + 1;
     return counter;
-  }
+  };
 }
 
 //Uncomment this once you make your function
@@ -85,7 +85,7 @@ function counterFactory(value) {
       value--;
       return value;
     }
-  }
+  };
 }
 
 counter = counterFactory(10);
@@ -109,7 +109,7 @@ counter = counterFactory(10);
 
     //Uncommment this to return the value of your invoked message function
 
-    return message()
+    return message();
   }
 
   motivation('Billy', 'Bob'); // 'Your doing awesome keep it up Billy Bob
@@ -152,38 +152,36 @@ counter = counterFactory(10);
 
 function timeOutCounter() {
   for (var i = 0; i <= 5; i++) {
-    setTimeout(newScope(i), i * 1000)
+    setTimeout(newScope(i), i * 1000);
   }
 
   function newScope(i) {
     return function() {
-      console.log(i)
-    }
+      console.log(i);
+    };
   }
 }
   // To make this code work you will need to create a new scope for every iteration.
 
 //////////////////PROBLEM 8////////////////////
 
-var funcArray[]() {
-  function makeArray() {
-    for (var i = 0; i <= 5; i++) {
-      funcArray.push(i);
-    }
-    return funcArray;
+var funcArray = [];
+var numbers = [0,1,2,3,4,5];
+
+function makeFn(num) {
+  return function() {
+    return num;
+  };
+}
+
+function makeArray(arr) {
+  for(var i = 0; i < arr; i++) {
+    funcArray.push(makeFn(i));
   }
 }
 
-function funcArray[i]() {
+makeArray(6);
 
-}
-
-  function funcArray(i) {
-    return function() {
-      funcArray.push
-    }
-  }
-}
 /*
   Make the following code work
 
